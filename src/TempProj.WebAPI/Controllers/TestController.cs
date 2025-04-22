@@ -2,26 +2,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TempProj.WebAPI.Controllers;
 
+/// <summary>
+/// Контролер для тестових запитів.
+/// </summary>
 [ApiController]
 [Route("api/test")]
-public class TestController : ControllerBase
+public class TestController(ILogger<TestController> logger) : ControllerBase
 {
-    private ILogger<TestController> logger;
+    private readonly ILogger<TestController> _logger = logger;
 
-    public TestController(ILogger<TestController> logger)
+    /// <summary>
+    /// Отримати тестові дані.
+    /// </summary>
+    [HttpGet("get/data")]
+    public async Task<IActionResult> GetDataAsync()
     {
-        this.logger = logger;
-    }
+        const int firstValue = 5;
+        const int secondValue = 10;
+        var result = firstValue + secondValue;
 
-    [HttpGet]
-    public async Task<IActionResult> GetData()
-    {
-        logger.LogInformation("here");
+        _logger.LogInformation("Отримано тестові дані. Результат: {Result}", result);
 
-        var x = 5;
-        var y = 10;
-        var result = x + y;
-
-        return Ok();
+        return Ok(result);
     }
 }
