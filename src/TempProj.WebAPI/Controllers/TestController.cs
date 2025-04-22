@@ -4,14 +4,23 @@ namespace TempProj.WebAPI.Controllers;
 
 [ApiController]
 [Route("api/test")]
-public class TestController(ILogger<TestController> logger) : ControllerBase
+public class TestController : ControllerBase
 {
-    private readonly ILogger<TestController> _logger = logger;
+    private ILogger<TestController> logger;
 
-    [HttpGet("get/data")]
-    public async Task<IActionResult> GetSomeData()
+    public TestController(ILogger<TestController> logger)
     {
-        _logger.LogInformation("GetSomeData method is active!)");
+        this.logger = logger;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetData()
+    {
+        logger.LogInformation("here");
+
+        var x = 5;
+        var y = 10;
+        var result = x + y;
 
         return Ok();
     }

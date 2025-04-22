@@ -7,5 +7,10 @@ namespace TempProj.WebAPI.Controllers;
 public class AuthController : Controller
 {
     [HttpGet("login")]
-    public string Login() => "Logged in";
+    public string Login()
+    {
+        // ! тут асинзхронний запит до сервісу для виконання авторизації !
+
+        return "ok";
+    }
 }
