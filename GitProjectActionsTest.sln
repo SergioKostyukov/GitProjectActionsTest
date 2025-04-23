@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{65463438-73B1-42DF-8CF7-DAC0C102A393}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
